@@ -1,6 +1,7 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/Home_page.dart';
-
 
 class Login_page extends StatefulWidget {
   const Login_page({Key? key}) : super(key: key);
@@ -10,17 +11,21 @@ class Login_page extends StatefulWidget {
 }
 
 class _Login_pageState extends State<Login_page> {
-
   bool changeButton = false;
+  final formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Login page"),
+        backgroundColor: Colors.cyanAccent,
+      ),
       backgroundColor: Colors.white,
-      body: Center(
-          child: SingleChildScrollView(    // Scroll the screen
-            child: Column(
-        children: [
+      body: SingleChildScrollView(
+        // Scroll the screen
+        child: Column(
+          children: [
             Image.asset(
               "assets/images/Login.png",
               fit: BoxFit.cover,
@@ -45,6 +50,7 @@ class _Login_pageState extends State<Login_page> {
                       labelText: "Username",
                     ),
                   ),
+
                   TextFormField(
                     obscureText: true, // hide the text
                     decoration: InputDecoration(
@@ -57,52 +63,53 @@ class _Login_pageState extends State<Login_page> {
                     height: 10,
                   ),
 
-
                   /////// Design animated wedgets /////
 
-
                   InkWell(
-                    onTap: ()async{    // async use for await permeter
+                    onTap: () async {
+                      // async use for await permeter
 
-                    setState((){
-                      changeButton = true;
-                    });
+                      setState(() {
+                        changeButton = true;
+                      });
 
-                    await Future.delayed(Duration(seconds: 1));  // wait 1 seconds for animation
+                      await Future.delayed(
+                          Duration(seconds: 1)); // wait 1 seconds for animation
 
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Home_page()));
+                      await Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Home_page()));
+
+                      setState(() {
+                        changeButton = false;
+                      });
                     },
-
                     child: AnimatedContainer(
-                      duration: Duration(seconds: 1),   // duration of animation
+                      duration: Duration(seconds: 1), // duration of animation
 
                       height: 40,
-                      width: changeButton? 50:  130 ,
+                      width: changeButton ? 50 : 130,
                       alignment: Alignment.center,
-                      child: changeButton?Icon(Icons.done,color: Colors.white,):   // if click on button is true show done icon else show login text
-                      Text("Login",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18
-
-                        ),),
+                      child: changeButton
+                          ? Icon(
+                              Icons.done,
+                              color: Colors.white,
+                            )
+                          : // if click on button is true show done icon else show login text
+                          Text(
+                              "Login",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
 
                       decoration: BoxDecoration(
-                        color: Colors.cyanAccent,
-                        borderRadius: BorderRadius.circular(50)
-
-                      ),
+                          color: Colors.cyanAccent,
+                          borderRadius: BorderRadius.circular(50)),
                     ),
                   )
 
-
-
-
-                                    /////// A w /////
-
-
-
+                  /////// A w /////
 
                   // RaisedButton(
                   //   onPressed: () {
@@ -111,18 +118,12 @@ class _Login_pageState extends State<Login_page> {
                   //   child: Text("Login"),
                   //
                   // )
-
-
-
-
-
-
                 ],
               ),
             )
-        ],
+          ],
+        ),
       ),
-          )),
     );
   }
 }
