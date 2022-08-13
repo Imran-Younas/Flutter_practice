@@ -8,7 +8,7 @@ class Home_Page extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("1st Page of App"),
-        backgroundColor: Colors.cyan,
+        backgroundColor: Colors.cyan[200],
       ),
       drawer: Drawer(
       ),

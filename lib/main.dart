@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/Home_page.dart';
+import 'package:flutter_practice/Login_page.dart';
+
+
 void main(){
-  runApp(MaterialApp(
+  runApp( const MaterialApp(
     debugShowCheckedModeBanner: false,
     title: "Parctice",
     home: First_page(),
@@ -13,6 +16,6 @@ class First_page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Home_Page();
+    return Login_page();
   }
 }
