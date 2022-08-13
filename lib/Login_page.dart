@@ -2,8 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practice/Home_page.dart';
 
 
-class Login_page extends StatelessWidget {
+class Login_page extends StatefulWidget {
   const Login_page({Key? key}) : super(key: key);
+
+  @override
+  State<Login_page> createState() => _Login_pageState();
+}
+
+class _Login_pageState extends State<Login_page> {
+
+  bool changeButton = false;
 
   @override
   Widget build(BuildContext context) {
@@ -50,13 +58,65 @@ class Login_page extends StatelessWidget {
                   ),
 
 
-                  RaisedButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Home_page()));
-                    },
-                    child: Text("Login"),
+                  /////// Design animated wedgets /////
 
+
+                  InkWell(
+                    onTap: ()async{    // async use for await permeter
+
+                    setState((){
+                      changeButton = true;
+                    });
+
+                    await Future.delayed(Duration(seconds: 1));  // wait 1 seconds for animation
+
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Home_page()));
+                    },
+
+                    child: AnimatedContainer(
+                      duration: Duration(seconds: 1),   // duration of animation
+
+                      height: 40,
+                      width: changeButton? 50:  130 ,
+                      alignment: Alignment.center,
+                      child: changeButton?Icon(Icons.done,color: Colors.white,):   // if click on button is true show done icon else show login text
+                      Text("Login",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18
+
+                        ),),
+
+                      decoration: BoxDecoration(
+                        color: Colors.cyanAccent,
+                        borderRadius: BorderRadius.circular(50)
+
+                      ),
+                    ),
                   )
+
+
+
+
+                                    /////// A w /////
+
+
+
+
+                  // RaisedButton(
+                  //   onPressed: () {
+                  //     Navigator.push(context, MaterialPageRoute(builder: (context) => Home_page()));
+                  //   },
+                  //   child: Text("Login"),
+                  //
+                  // )
+
+
+
+
+
+
                 ],
               ),
             )
