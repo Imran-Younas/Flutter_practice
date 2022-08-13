@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/Home_page.dart';
 void main(){
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -12,17 +13,6 @@ class First_page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("1st Page of App"),
-        backgroundColor: Colors.grey,
-      ),
-
-      body: Center(
-        child: Container(
-          child: Text("Practice App"),
-        ),
-      ),
-    );
+    return Home_Page();
   }
 }
