@@ -8,6 +8,18 @@ class List_view_builder extends StatefulWidget {
 }
 
 class _List_view_builderState extends State<List_view_builder> {
+
+  TextEditingController controller1 = TextEditingController();
+  TextEditingController controller2 = TextEditingController();
+  int num1 = 0, num2 = 0, ans1 = 0, ans2 = 0;
+  add(){
+    setState((){
+      num1 = int.parse(controller1.text);
+      num2 = int.parse(controller2.text);
+
+      ans1 = num1 + num2;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +31,9 @@ class _List_view_builderState extends State<List_view_builder> {
         child: Column(
           children: [
             TextFormField(
+
+              controller: controller1,
+
               decoration: InputDecoration(
                   hintText: "Enter 1st digit $index"
               ),
@@ -26,14 +41,20 @@ class _List_view_builderState extends State<List_view_builder> {
             ),
 
             TextFormField(
+
+              controller: controller2,
+
               decoration: InputDecoration(
                   hintText: "Enter 2nd digit"
               ),
 
             ),
 
-            Text("Output:       "),
-            RaisedButton(onPressed: (){}, child: Text("Click mee"),)
+            Text("Output: $ans1       "),
+
+            RaisedButton(onPressed: (){
+              add();
+            }, child: Text("Click mee"),)
 
           ],
         ),

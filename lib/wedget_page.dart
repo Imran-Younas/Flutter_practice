@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/wedget/List_view_builder.dart';
 
 class wedget_pages extends StatefulWidget {
   const wedget_pages({Key? key}) : super(key: key);
@@ -10,6 +11,6 @@ class wedget_pages extends StatefulWidget {
 class _wedget_pagesState extends State<wedget_pages> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return List_view_builder();
   }
 }

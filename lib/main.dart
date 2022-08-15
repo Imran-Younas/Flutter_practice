@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/Dynamic_List.dart';
 import 'package:flutter_practice/Home_page.dart';
 import 'package:flutter_practice/Login_page.dart';
+import 'package:flutter_practice/Test.dart';
+import 'package:flutter_practice/wedget_page.dart';
 
 
 void main(){
@@ -16,7 +19,9 @@ class First_page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-//    return Login_page();
-      return Home_page();
+   // return Login_page();
+   //    return Home_page();
+  //  return wedget_pages();
+    return Dynamic_List();
   }
 }
